@@ -8,8 +8,8 @@ jobs:
         #  aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
     steps:
       - checkout
-      #- setup_remote_docker:
-      #    docker_layer_caching: false
+      - setup_remote_docker:
+          docker_layer_caching: false
       #- run:
       #    name: GET Dockerfile 
       #    command: wget https://raw.githubusercontent.com/minepicco/speechtotext-dockerfile/master/Dockerfile -O Dockerfile
