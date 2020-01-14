@@ -8,26 +8,11 @@ jobs:
         #  aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: false
-      #- run:
-      #    name: GET Dockerfile 
-      #    command: wget https://raw.githubusercontent.com/minepicco/speechtotext-dockerfile/master/Dockerfile -O Dockerfile
-      #- run:
-      #    name: docker ps
-      #    command: docker ps -a
+      - setup_remote_docker
+
       - run:
           name: build
           command: docker build -t $image .
-      #- run:
-      #    name: extract scan files
-      #    command: cd /&& mkdir /twistlock && cd /twistlock/ && wget https://cdn.twistlock.com/releases/c84791c5/twistlock_19_07_363.tar.gz && tar zxvf /twistlock/twistlock_19_07_363.tar.gz -C /twistlock/
-      #- run:
-      #    name: scan
-      #    command: out=`/twistlock/linux/twistcli images scan -u tw_user -p tw_pass --address $address --vulnerability-threshold $vulnerability --compliance-threshold $compliance --details $image | grep -c FAIL`
-      #- run:
-      #    name: examin result
-      #    command: if [ $out !=0 ]; then echo "vulnerability or compliance violation detected" && exit 1; else echo $image" is ready to publish in Dockerhub"; fi;
       - run:
           name: docker login
           command: docker login -u $username -p $password #-e $mailaddress     
