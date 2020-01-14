@@ -1,4 +1,4 @@
-From ubuntu:18.04
+From ubuntu
 RUN apt-get install -y python wget
 RUN curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 RUN python get-pip.py
