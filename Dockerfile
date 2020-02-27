@@ -1,4 +1,4 @@
-From ubuntu:18.04
+From nginx:1.12
 RUN apt-get update && apt install -y python wget curl jq
 RUN curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 RUN python get-pip.py
