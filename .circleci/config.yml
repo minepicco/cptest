@@ -14,7 +14,7 @@ jobs:
           name: build
           command: |
             docker build -t $image":"$CIRCLE_BUILD_NUM .
-            docker tag $image":"$CIRCLE_BUILD_NUM $image
+            docker tag $image":"$CIRCLE_BUILD_NUM $image":latest"
       - run:
           name: docker login
           command: docker login -u $username -p $password #-e $mailaddress     
@@ -22,10 +22,11 @@ jobs:
           name: docker push
           command: |
             docker push $image":"$CIRCLE_BUILD_NUM 
-            docker push $image
+            docker push $image":latest"
       - run:
           name: kick regscan
           command: |
             curl -k -u $TL_PASS -X POST $TL_URL"/api/v1/registry/scan" -d '{"tag":{"registry":"","repo":"'$image'","tag":"latest"}}'
+            echo "latest scan started"
             curl -k -u $TL_PASS -X POST $TL_URL"/api/v1/registry/scan" -d '{"tag":{"registry":"","repo":"'$image'","tag":"'$CIRCLE_BUILD_NUM'"}}'
             echo "Completed"
