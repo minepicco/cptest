@@ -5,8 +5,8 @@ jobs:
       - image: minepicco/cci-aws-docker:latest
         environment:
           image: "minepicco/cptest"
-          tag1: "7"
-          tag2: "8"
+          tag1: $CIRCLE_BUILD_NUM
+          tag2: $CIRCLE_BUILD_NUM"_2"
     steps:
       - checkout
       - setup_remote_docker
