@@ -1,2 +1,3 @@
-From ubuntu:18.04
-RUN apt-get update && apt-get install -y wget nmap
+From ubuntu:14.04
+RUN apt-get update 
+RUN apt-get install -y wget nmap
