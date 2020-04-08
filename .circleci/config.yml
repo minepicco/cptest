@@ -5,8 +5,8 @@ jobs:
       - image: minepicco/cci-aws-docker:latest
         environment:
           image: "minepicco/cptest"
-          tag1: "3"
-          tag2: "4"
+          tag1: "5"
+          tag2: "6"
     steps:
       - checkout
       - setup_remote_docker
@@ -28,3 +28,4 @@ jobs:
           name: kick regscan
           command: |
             curl -k -u $TL_PASS -X POST $TL_URL"/api/v1/registry/scan" -d '{"tag":{"registry":"","repo":"'$image'","tag":""}}'
+            echo "Completed"
