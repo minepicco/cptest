@@ -1,1 +1,1 @@
-From node:10.18-jessie
+From tomcat:9-jdk8-corretto
