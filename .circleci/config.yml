@@ -3,19 +3,30 @@ jobs:
   build:
     docker:
       - image: minepicco/cci-aws-docker:latest
-        #aws_auth:
-        #  aws_access_key_id: $AWS_ACCESS_KEY_ID
-        #  aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
+      environment:
+        image: minepicco/cptest
+        tag1: 1
+        tag2: 2
     steps:
       - checkout
       - setup_remote_docker
 
       - run:
           name: build
-          command: docker build -t $image .
+          command: |
+            docker build -t $image":"$tag1 .
+            docker tag $image":"$tag1 $image":"$tag２
       - run:
           name: docker login
           command: docker login -u $username -p $password #-e $mailaddress     
       - run:
           name: docker push
-          command: docker push $image
+          command: |
+            docker push $image":"$tag1 
+            docker push $image":"$tag２
+      - run:
+          name: kick regscan
+          command: |
+            curl -k -u $TL_PASS -X POST $TL_URL:8083/api/v1/registry/scan -d '{"tag":{"registry":"","repo":"'$image'","tag":"'$tag1'"}}'
+            curl -k -u $TL_PASS -X POST $TL_URL:8083/api/v1/registry/scan -d '{"tag":{"registry":"","repo":"'$image'","tag":"'$tag2'"}}'
+
