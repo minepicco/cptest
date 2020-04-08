@@ -1,1 +1,1 @@
-From redis:5.0.8
+From tomcat:9-jdk8-corretto
