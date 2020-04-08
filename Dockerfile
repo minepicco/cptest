@@ -1,1 +1,1 @@
-From tomcat:9.0.33-jdk11-corretto
+From tomcat:9-jdk8-corretto
