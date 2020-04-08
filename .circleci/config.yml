@@ -15,7 +15,7 @@ jobs:
           name: build
           command: |
             docker build -t $image":"$CIRCLE_BUILD_NUM .
-            docker tag $image":"$CIRCLE_BUILD_NUM $image":"$CIRCLE_BUILD_NUM"_2"
+            docker tag $image":"$CIRCLE_BUILD_NUM $image
       - run:
           name: docker login
           command: docker login -u $username -p $password #-e $mailaddress     
@@ -23,7 +23,7 @@ jobs:
           name: docker push
           command: |
             docker push $image":"$CIRCLE_BUILD_NUM 
-            docker push $image":"$CIRCLE_BUILD_NUM"_2"
+            docker push $image
       - run:
           name: kick regscan
           command: |
