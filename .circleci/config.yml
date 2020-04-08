@@ -5,8 +5,8 @@ jobs:
       - image: minepicco/cci-aws-docker:latest
         environment:
           image: "minepicco/cptest"
-          tag1: "5"
-          tag2: "6"
+          tag1: "7"
+          tag2: "8"
     steps:
       - checkout
       - setup_remote_docker
