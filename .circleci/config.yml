@@ -27,5 +27,6 @@ jobs:
       - run:
           name: kick regscan
           command: |
-            curl -k -u $TL_PASS -X POST $TL_URL"/api/v1/registry/scan" -d '{"tag":{"registry":"","repo":"'$image'","tag":"'$tag1'"}}'
-            curl -k -u $TL_PASS -X POST $TL_URL"/api/v1/registry/scan" -d '{"tag":{"registry":"","repo":"'$image'","tag":"'$tag2'"}}'
+          #  curl -k -u $TL_PASS -X POST $TL_URL"/api/v1/registry/scan" -d '{"tag":{"registry":"","repo":"'$image'","tag":"'$tag1'"}}'
+          #  curl -k -u $TL_PASS -X POST $TL_URL"/api/v1/registry/scan" -d '{"tag":{"registry":"","repo":"'$image'","tag":"'$tag2'"}}'
+            curl -k -u $TL_PASS -X POST $TL_URL"/api/v1/registry/scan" -d '{"tag":{"registry":"","repo":"'$image'","tag":"'$tag2'"},"tag":{"registry":"","repo":"'$image'","tag":"'$tag1'"}}'
