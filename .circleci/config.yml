@@ -6,7 +6,7 @@ jobs:
         environment:
           image: "minepicco/cptest"
           tag1: $CIRCLE_BUILD_NUM
-          tag2: $CIRCLE_BUILD_NUM"_2"
+          tag2: "_2"
     steps:
       - checkout
       - setup_remote_docker
@@ -15,7 +15,7 @@ jobs:
           name: build
           command: |
             docker build -t $image":"$CIRCLE_BUILD_NUM .
-            docker tag $image":"$tag1 $image":"$CIRCLE_BUILD_NUM"_2"
+            docker tag $image":"$CIRCLE_BUILD_NUM $image":"$CIRCLE_BUILD_NUM"_2"
       - run:
           name: docker login
           command: docker login -u $username -p $password #-e $mailaddress     
