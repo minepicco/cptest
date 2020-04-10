@@ -17,7 +17,7 @@ jobs:
             docker tag $image":"$CIRCLE_BUILD_NUM $image":latest"
       - run:
           name: docker login
-          command: docker login -u $username -p $password #-e $mailaddress     
+          command: docker login -u $username -p $password   
       - run:
           name: docker push
           command: |
